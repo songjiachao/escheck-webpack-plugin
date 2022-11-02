@@ -14,6 +14,8 @@
 
 Check all the webpack generated files to find whether the code match the selected ES version. If doesn't match the plugin will thorw an error and stop webpack emit files.
 
+![Demo](https://raw.githubusercontent.com/songjiachao/images/main/escheck-webpack-plugin/demo.gif)
+
 ## 📦 Installation
 ```
 yarn add -D escheck-webpack-plugin
