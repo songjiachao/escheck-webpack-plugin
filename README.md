@@ -29,7 +29,7 @@ module.exports = {
   plugins: [
     new new ESCheck({
       // type ecmaVersion = 3 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 | 'latest'
-      ecmaVersion: 5 // 可以不传，默认值为5
+      ecmaVersion: 'latest' // optional, default 'latest'
     })
   ]
 }

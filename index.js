@@ -1,9 +1,9 @@
-const path = require("path");
-const fs = require("fs");
-const acorn = require("acorn");
+const path = require('path')
+const fs = require('fs')
+const acorn = require('acorn')
 
 const defaultOptions = {
-  ecmaVersion: 5
+  ecmaVersion: 'latest'
 }
 
 class ESCheckPlugin {
@@ -11,17 +11,17 @@ class ESCheckPlugin {
     this.options = { ...defaultOptions, ...options }
   }
   apply(compiler) {
-    compiler.hooks.emit.tapAsync("ESCheckPlugin", (compilation,callback) => {
+    compiler.hooks.emit.tapAsync('ESCheckPlugin', (compilation,callback) => {
       if(process.env.NODE_ENV==='production'){
         for (const [name, asset] of Object.entries(compilation.assets)) {
-          const extname = path.extname(name);
-          const basename = path.basename(name);
+          const extname = path.extname(name)
+          const basename = path.basename(name)
           const code = asset.source()
-          if (extname === ".js") {
+          if (extname === '.js') {
             try {
               acorn.parse(code, {
                 ecmaVersion: this.options.ecmaVersion,
-              });
+              })
             } catch (err) {
               // 将有问题的文件写入到output文件夹中
               const outputPath = compilation.outputOptions.path
@@ -29,14 +29,14 @@ class ESCheckPlugin {
               const { line, column } = err.loc
               const arr = code.split(/\r?\n/)
               const errLine = arr[line - 1]
-              throw new Error("filename: " + name + '\n' + JSON.stringify(err.loc) + '\n' + errLine.slice(column - 20, column + 20))
+              throw new Error(err.message +'\n' + 'filename: ' + name + '\n' + JSON.stringify(err.loc) + '\n' + errLine.slice(column, column + 20))
             }
           }
         }
       }
       callback()
-    });
+    })
   }
 }
 
-module.exports = ESCheckPlugin;
+module.exports = ESCheckPlugin

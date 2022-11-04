@@ -1,6 +1,6 @@
 {
   "name": "escheck-webpack-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Check all the webpack generated files to find whether the code match the selected ES version. If doesn't match the plugin will thorw an error and stop webpack emit files.",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/songjiachao/escheck-webpack-plugin#readme",
   "devDependencies": {
-    "acorn": "^8.8.1"
+    "acorn": "^8.8.1",
+    "eslint": "^8.26.0"
   }
 }
