@@ -1,7 +1,7 @@
 {
   "name": "escheck-webpack-plugin",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Check all the webpack generated files to find whether the code match the selected ES version. If doesn't match the plugin will thorw an error and stop webpack emit files.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
